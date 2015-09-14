@@ -50,7 +50,7 @@ public class PrettyTimeI18n_CA_Test
       assertEquals("fa 1 mes", t.format(then));
    }
 
-   @Test(expected = IllegalArgumentException.class)
+   @Test
    public void testNullDate() throws Exception
    {
       PrettyTime t = new PrettyTime();
@@ -189,6 +189,12 @@ public class PrettyTimeI18n_CA_Test
          public long getMillisPerUnit()
          {
             return 5000;
+         }
+         
+         @Override
+         public boolean isPrecise()
+         {
+            return false;
          }
       };
       t.clearUnits();

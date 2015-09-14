@@ -58,9 +58,41 @@ public abstract class ResourcesTimeUnit implements TimeUnit
    }
 
    @Override
+   public boolean isPrecise()
+   {
+      return true;
+   }
+
+   @Override
    public String toString()
    {
       return getResourceKeyPrefix();
    }
 
+   @Override
+   public int hashCode()
+   {
+      final int prime = 31;
+      int result = 1;
+      result = prime * result + (int) (maxQuantity ^ (maxQuantity >>> 32));
+      result = prime * result + (int) (millisPerUnit ^ (millisPerUnit >>> 32));
+      return result;
+   }
+
+   @Override
+   public boolean equals(Object obj)
+   {
+      if (this == obj)
+         return true;
+      if (obj == null)
+         return false;
+      if (getClass() != obj.getClass())
+         return false;
+      ResourcesTimeUnit other = (ResourcesTimeUnit) obj;
+      if (maxQuantity != other.maxQuantity)
+         return false;
+      if (millisPerUnit != other.millisPerUnit)
+         return false;
+      return true;
+   }
 }

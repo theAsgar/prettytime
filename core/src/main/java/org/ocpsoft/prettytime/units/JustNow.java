@@ -18,17 +18,24 @@ package org.ocpsoft.prettytime.units;
 import org.ocpsoft.prettytime.TimeUnit;
 import org.ocpsoft.prettytime.impl.ResourcesTimeUnit;
 
-
-public class JustNow extends ResourcesTimeUnit implements TimeUnit {
+public class JustNow extends ResourcesTimeUnit implements TimeUnit
+{
 
    public JustNow()
    {
-      setMaxQuantity(1000L * 60L * 5L);
+      setMaxQuantity(1000L * 60L);
    }
 
    @Override
-   protected String getResourceKeyPrefix() {
+   protected String getResourceKeyPrefix()
+   {
       return "JustNow";
+   }
+
+   @Override
+   public boolean isPrecise()
+   {
+      return false;
    }
 
 }
